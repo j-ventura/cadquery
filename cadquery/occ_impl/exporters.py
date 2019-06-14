@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from OCC.Core.Visualization import Tesselator
+from OCC.Visualization import Tesselator
 
 import tempfile
 import os
@@ -12,11 +12,11 @@ else:
 from .shapes import Shape, Compound, TOLERANCE
 from .geom import BoundBox
 
-from OCC.Core.gp import gp_Ax2, gp_Pnt, gp_Dir
-from OCC.Core.BRepLib import breplib
-from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
-from OCC.Core.HLRAlgo import HLRAlgo_Projector
-from OCC.Core.GCPnts import GCPnts_QuasiUniformDeflection
+from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir
+from OCC.BRepLib import breplib
+from OCC.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
+from OCC.HLRAlgo import HLRAlgo_Projector
+from OCC.GCPnts import GCPnts_QuasiUniformDeflection
 
 try:
     import xml.etree.cElementTree as ET

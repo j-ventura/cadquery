@@ -1,8 +1,8 @@
 from .. import cq
 from .shapes import Shape
 
-from OCC.Core.STEPControl import STEPControl_Reader
-import OCC.Core.IFSelect
+from OCC.STEPControl import STEPControl_Reader
+import OCC.IFSelect
 
 
 class ImportTypes:
@@ -38,7 +38,7 @@ def importStep(fileName):
     # Now read and return the shape
     reader = STEPControl_Reader()
     readStatus = reader.ReadFile(fileName)
-    if readStatus != OCC.Core.IFSelect.IFSelect_RetDone:
+    if readStatus != OCC.IFSelect.IFSelect_RetDone:
         raise ValueError("STEP File could not be loaded")
     for i in range(reader.NbRootsForTransfer()):
         reader.TransferRoot(i+1)
