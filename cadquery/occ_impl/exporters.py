@@ -102,7 +102,7 @@ def exportShape(shape, exportType, fileLike, tolerance=0.1, binary=True):
         if exportType == ExportTypes.STEP:
             shape.exportStep(outFileName)
         elif exportType == ExportTypes.STL:
-            shape.exportStl(outFileName, tolerance)
+            shape.exportStl(outFileName, tolerance, binary=binary)
         else:
             raise ValueError("No idea how i got here")
 
