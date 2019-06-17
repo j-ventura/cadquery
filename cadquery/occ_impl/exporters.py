@@ -46,7 +46,7 @@ def toString(shape, exportType, tolerance=0.1):
     return s.getvalue()
 
 
-def exportShape(shape, exportType, fileLike, tolerance=0.1):
+def exportShape(shape, exportType, fileLike, tolerance=0.1, binary=True):
     """
         :param shape:  the shape to export. it can be a shape object, or a cadquery object. If a cadquery
         object, the first value is exported
@@ -106,18 +106,21 @@ def exportShape(shape, exportType, fileLike, tolerance=0.1):
         else:
             raise ValueError("No idea how i got here")
 
-        res = readAndDeleteFile(outFileName)
+        res = readAndDeleteFile(outFileName, binary=binary)
         fileLike.write(res)
 
 
-def readAndDeleteFile(fileName):
+def readAndDeleteFile(fileName, binary=True):
     """
         read data from file provided, and delete it when done
         return the contents as a string
     """
-    res = ""
-    with open(fileName, 'r') as f:
-        res = "{}".format(f.read())
+    if binary:
+        with open(fileName, 'rb') as f:
+            res = f.read()
+    else:
+        with open(fileName, 'r') as f:
+            res = "{}".format(f.read())
 
     os.remove(fileName)
     return res
